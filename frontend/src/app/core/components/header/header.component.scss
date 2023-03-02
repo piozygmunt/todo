@@ -1,0 +1,16 @@
+@use "variables";
+
+.header-toolbar {
+  height: 70px;
+  padding: 0 variables.$content-padding;
+
+  .header-toolbar-content {
+    width: 100%;
+    max-width: variables.$content-max-width;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
