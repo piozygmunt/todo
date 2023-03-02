@@ -1,0 +1,36 @@
+{
+  "header": {
+    "appName": "Todo list",
+    "archivedToDos": "Archived todos"
+  },
+  "activeToDos": {
+    "title": "Active tasks",
+    "info": "This is the list of your current tasks with validity dates. You can set up to 5 current tasks. You can remove, resolve or reorder the list with drag and drop.",
+    "emptyList": "List of your todos is empty. Add your first item below!",
+    "listTitle": "Your active tasks",
+    "createToDo": "Create to do"
+  },
+  "archivedToDos": {
+    "title": "Archived tasks",
+    "listTitle": "Your archived tasks",
+    "info": "This is the list of your archived tasks. Table is sortable and pageable.",
+    "emptyList": "List of your archived todos is empty. Item will show up once it is resolved or it expires.!",
+    "creationDate": "Creation date",
+    "status": "Status",
+    "expiredAgo": "Expired {{value}} ago",
+    "resolvedAgo": "Resolved {{value}} ago",
+    "resolvedJustNow": "Resolved just now"
+  },
+  "createDialog": {
+    "title": "Create new to do",
+    "validUntilDate": "Valid until",
+    "dataSavedLocally": "Current data has been saved in browser storage",
+    "clearForm": "Clear form",
+    "save": "Save",
+    "descriptionMaxLengthError": "Max characters: {{value}}",
+    "validUntilMaxDateError": "Max date: {{value}}",
+    "validUntilMinDateError": "Min date: {{value}}",
+    "formInfo": "Saving will be available after all form errors are fixed"
+  },
+  "description": "Description"
+}
