@@ -8,6 +8,11 @@ const routes: Routes = [
     loadChildren: () => import('./active-todos/active-todos.module').then((m) => m.ActiveTodosModule)
   },
   {
+    path: 'archived-todos',
+    title: 'archivedToDos.title',
+    loadChildren: () => import('./archived-todos/archived-todos.module').then((m) => m.ArchivedTodosModule)
+  },
+  {
     path: '**',
     redirectTo: 'active-todos'
   }

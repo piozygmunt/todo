@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{'archivedToDos.listTitle' | translate}}</mat-card-title>
+      <mat-card-subtitle>{{'archivedToDos.info' | translate}}</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <app-archived-todos-table [archivedToDosResponse]="archivedToDosResponse$ | async"
+                              (sortPageChange)="onSortPageChange($event)">
+    </app-archived-todos-table>
+  </mat-card-content>
+</mat-card>
