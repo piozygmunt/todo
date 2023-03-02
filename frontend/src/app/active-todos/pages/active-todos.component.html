@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{'activeToDos.listTitle' | translate}}</mat-card-title>
+      <mat-card-subtitle>{{'activeToDos.info' | translate}}</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <app-active-todo-list
+      [toDos]="toDos"
+      (toDosSwapped)="onToDosSwapped($event)"
+      (toDoResolved)="onToDoResolved($event)"
+      (toDoRemoved)="onToRemoved($event)">
+    </app-active-todo-list>
+  </mat-card-content>
+</mat-card>
+<button class="create-todo-btn"
+        mat-raised-button
+        [disabled]="toDos.length >= maxToDosCount"
+        (click)="openCreateToDoDialog()">
+  {{'activeToDos.createToDo'| translate}}
+</button>

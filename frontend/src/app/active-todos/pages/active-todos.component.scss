@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-todo-btn {
+  margin-top: 10px;
+  align-self: end;
+}

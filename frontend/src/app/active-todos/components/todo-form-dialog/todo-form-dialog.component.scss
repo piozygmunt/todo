@@ -1,0 +1,8 @@
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+
+  .description {
+    max-height: 400px;
+  }
+}

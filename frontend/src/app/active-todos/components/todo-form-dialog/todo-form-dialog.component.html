@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>{{'createDialog.title' | translate}}</h1>
+<div [formGroup]="toDoForm" class="dialog-content" mat-dialog-content>
+  {{'createDialog.formInfo' | translate}}
+  <mat-form-field class="description">
+    <mat-label>{{'description' | translate}}</mat-label>
+    <textarea formControlName="description" matInput></textarea>
+    <mat-error *ngIf="toDoForm?.controls?.['description']?.errors?.['maxlength']">
+      {{'createDialog.descriptionMaxLengthError' | translate: {value: descriptionMaxLength} }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{'createDialog.validUntilDate' | translate}}</mat-label>
+    <input [min]="minValidityDate" [max]="maxValidityDate" formControlName="validUntil" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="toDoForm?.controls?.['validUntil']?.errors?.['matDatepickerMin']">
+      {{'createDialog.validUntilMinDateError' | translate: {value: (minValidityDate | date)} }}
+    </mat-error>
+    <mat-error *ngIf="toDoForm?.controls?.['validUntil']?.errors?.['matDatepickerMax']">
+      {{'createDialog.validUntilMaxDateError' | translate: {value: (maxValidityDate | date)} }}
+    </mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="clearForm()">{{'createDialog.clearForm' | translate}}</button>
+  <button mat-button [disabled]="!toDoForm.valid" (click)="onSaveClick()">{{'createDialog.save' | translate}}</button>
+</div>
