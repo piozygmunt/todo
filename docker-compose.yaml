@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+    backend:
+        image: todo-backend
+        container_name: todo-backend
+        build: ./backend
+    frontend:
+        image: todo-frontend
+        container_name: todo-frontend
+        build: ./frontend
+        ports:
+            - "80:80"
+        depends_on:
+            - backend
