@@ -20,7 +20,7 @@ export class ArchivedTodosComponent {
   constructor(private toDosService: TodosService) {
   }
 
-  onSortPageChange(archivedToDosQuery: ArchivedTodosQuery) {
+  onSortPageChange(archivedToDosQuery: ArchivedTodosQuery): void {
     this.archivedToDosQueryChange.next(archivedToDosQuery);
   }
 }

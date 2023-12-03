@@ -4,7 +4,7 @@ import {ToDo} from "../../../core/models/todo";
 @Component({
   selector: 'app-active-todo-list',
   templateUrl: './active-todo-list.component.html',
-  styleUrls: ['./active-todo-list.component.scss'],
+  styleUrl: './active-todo-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActiveTodoListComponent {

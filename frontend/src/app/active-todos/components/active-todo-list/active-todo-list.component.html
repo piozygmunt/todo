@@ -1,20 +1,14 @@
-<div *ngIf="toDos?.length else emptyToDos"
-     cdkDropList
-     (cdkDropListDropped)="dropActiveToDo($event)">
-  <app-active-todo-item
-    cdkDrag
-    *ngFor="let toDoItem of toDos; trackBy: getDoIdentity"
-    [toDo]="toDoItem" class="active-item"
-    (remove)="toDoRemoved.emit(toDoItem)"
+@if (!toDos.length) {
+<h3>{{'activeToDos.emptyList' | translate }}</h3>
+} @else {
+<div cdkDropList (cdkDropListDropped)="dropActiveToDo($event)">
+  @for (toDoItem of toDos; track getDoIdentity) {
+  <app-active-todo-item cdkDrag [toDo]="toDoItem" class="active-item" (remove)="toDoRemoved.emit(toDoItem)"
     (resolve)="toDoResolved.emit(toDoItem)">
-    <button cdkDragHandle
-            mat-icon-button
-            color="primary">
+    <button cdkDragHandle mat-icon-button color="primary">
       <mat-icon>drag_indicator</mat-icon>
     </button>
   </app-active-todo-item>
+  }
 </div>
-
-<ng-template #emptyToDos>
-  <h3>{{'activeToDos.emptyList' | translate }}</h3>
-</ng-template>
+}
