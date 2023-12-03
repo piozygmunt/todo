@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
@@ -10,9 +10,7 @@ import {ArchivedTodosResponse} from "../models/archived-todos-response";
   providedIn: 'root'
 })
 export class TodosService {
-
-  constructor(private http: HttpClient) {
-  }
+  private http: HttpClient = inject(HttpClient);
 
   getActiveToDos(): Observable<ToDo[]> {
     return this.http.get<ToDo[]>(this.createApiUrl("todos/active"), {responseType: "json"});

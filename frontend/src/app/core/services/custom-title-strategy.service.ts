@@ -1,19 +1,20 @@
-import {Injectable, Injector, OnDestroy} from '@angular/core';
+import {Injectable, Injector, OnDestroy, inject} from '@angular/core';
 import {Router, RouterStateSnapshot, TitleStrategy} from "@angular/router";
 import {TranslateService} from "@ngx-translate/core";
 import {Title} from "@angular/platform-browser";
 import {Subscription} from "rxjs";
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+
 
 @Injectable()
-export class CustomTitleStrategyService extends TitleStrategy implements OnDestroy {
+export class CustomTitleStrategyService extends TitleStrategy {
+  private translateService: TranslateService = inject(TranslateService);
+  private title: Title = inject(Title);
+  private injector: Injector = inject(Injector);
 
-  private languageSubscription: Subscription;
-
-  constructor(private translateService: TranslateService,
-              private title: Title,
-              private injector: Injector) {
+  constructor() { 
     super();
-    this.languageSubscription = this.translateService.onLangChange.subscribe(() => {
+    this.translateService.onLangChange.pipe(takeUntilDestroyed()).subscribe(() => {
       this.updateTitle(this.injector.get(Router).routerState.snapshot)
     });
   }
@@ -21,9 +22,5 @@ export class CustomTitleStrategyService extends TitleStrategy implements OnDestr
   updateTitle(snapshot: RouterStateSnapshot): void {
     const translateKey = this.buildTitle(snapshot) as string;
     this.title.setTitle(this.translateService.instant(translateKey));
-  }
-
-  ngOnDestroy() {
-    this.languageSubscription?.unsubscribe();
   }
 }

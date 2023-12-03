@@ -1,10 +1,8 @@
 <mat-toolbar class="header-toolbar" color="primary">
   <div class="header-toolbar-content">
     <app-navbar></app-navbar>
-    <mat-progress-spinner *ngIf="spinnerService.isSpinnerActive$ | async"
-                          color="accent"
-                          mode="indeterminate"
-                          [diameter]="30"></mat-progress-spinner>
+    @if (spinnerService.isSpinnerActive()) {
+    <mat-progress-spinner color="accent" mode="indeterminate" [diameter]="30"></mat-progress-spinner>
+    }
   </div>
 </mat-toolbar>
-

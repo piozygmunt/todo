@@ -1,30 +1,22 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from "rxjs";
+import {Injectable, Signal, WritableSignal, computed, signal} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpinnerService {
-  private spinnerCounter: number = 0;
-  private isSpinnerActive: Subject<boolean> = new BehaviorSubject(false);
-
-  isSpinnerActive$: Observable<boolean> = this.isSpinnerActive.asObservable();
+  private spinnerCounter: WritableSignal<number> = signal(0);
+  
+  isSpinnerActive: Signal<boolean> = computed(() => this.spinnerCounter() > 0);
 
   startSpinner(): void {
-    this.spinnerCounter++;
-    if (this.spinnerCounter === 1) {
-      this.isSpinnerActive.next(true);
-    }
+    this.spinnerCounter.update((counter) => counter + 1);
   }
 
   stopSpinner(): void {
-    if (this.spinnerCounter <= 0) {
+    if (this.spinnerCounter() <= 0) {
       return;
     }
 
-    this.spinnerCounter--;
-    if (this.spinnerCounter === 0) {
-      this.isSpinnerActive.next(false);
-    }
+    this.spinnerCounter.update((counter) => counter - 1);
   }
 }

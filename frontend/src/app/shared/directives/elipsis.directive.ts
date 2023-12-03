@@ -1,19 +1,12 @@
-import {Directive, ElementRef, HostBinding} from '@angular/core';
+import {Directive, ElementRef, inject} from '@angular/core';
 
 @Directive({
   selector: '[appElipsis]',
   host: {
-    class: 'u-elipsis'
+    class: 'u-elipsis',
+    '[attr.title]': 'elementRef.nativeElement.innerHTML'
   }
 })
 export class ElipsisDirective {
-
-  @HostBinding('attr.title')
-  get title(): string {
-    return this.elementRef.nativeElement.innerHTML;
-  }
-
-  constructor(private elementRef: ElementRef) {
-  }
-
+  elementRef: ElementRef = inject(ElementRef);
 }
