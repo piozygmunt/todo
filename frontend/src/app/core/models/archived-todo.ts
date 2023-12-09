@@ -7,8 +7,7 @@ export interface ArchivedToDo {
   expiredDate: string;
 }
 
-
 export enum ToDoStatus {
-  RESOLVED = "RESOLVED",
-  EXPIRED = "EXPIRED"
+  RESOLVED = 'RESOLVED',
+  EXPIRED = 'EXPIRED',
 }

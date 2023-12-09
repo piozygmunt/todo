@@ -1,14 +1,12 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {ArchivedToDo, ToDoStatus} from "../../core/models/archived-todo";
-import {TranslateService} from "@ngx-translate/core";
+import { Pipe, PipeTransform } from '@angular/core';
+import { ArchivedToDo, ToDoStatus } from '../../core/models/archived-todo';
+import { TranslateService } from '@ngx-translate/core';
 
 @Pipe({
-  name: 'timeAgo'
+  name: 'timeAgo',
 })
 export class TimeAgoPipe implements PipeTransform {
-
-  constructor(private translateService: TranslateService) {
-  }
+  constructor(private translateService: TranslateService) {}
 
   async transform(archivedToDo: ArchivedToDo): Promise<string> {
     const dateTo = new Date();
@@ -26,15 +24,18 @@ export class TimeAgoPipe implements PipeTransform {
         break;
     }
 
-
     const timeAgo = await this.calculateTimeAgo(dateFrom, dateTo);
-    return timeAgo.trim() ? this.translateService.instant(translationKey, {value: timeAgo}) :
-      this.translateService.instant('archivedToDos.resolvedJustNow');
+    return timeAgo.trim()
+      ? this.translateService.instant(translationKey, { value: timeAgo })
+      : this.translateService.instant('archivedToDos.resolvedJustNow');
   }
 
-  async calculateTimeAgo(dateFrom: Date | string, dateTo: Date | string): Promise<string> {
+  async calculateTimeAgo(
+    dateFrom: Date | string,
+    dateTo: Date | string
+  ): Promise<string> {
     // @ts-ignore
-    const {default: moment} = await import("moment");
+    const { default: moment } = await import('moment');
 
     const dateFromM = moment(dateFrom);
     const dateToM = moment(dateTo);
@@ -62,5 +63,4 @@ export class TimeAgoPipe implements PipeTransform {
 
     return `${months} ${days} ${hours} ${minutes} ${seconds}`;
   }
-
 }

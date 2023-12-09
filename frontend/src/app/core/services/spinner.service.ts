@@ -1,15 +1,21 @@
-import {Injectable, Signal, WritableSignal, computed, signal} from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  WritableSignal,
+  computed,
+  signal,
+} from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SpinnerService {
   private spinnerCounter: WritableSignal<number> = signal(0);
-  
+
   isSpinnerActive: Signal<boolean> = computed(() => this.spinnerCounter() > 0);
 
   startSpinner(): void {
-    this.spinnerCounter.update((counter) => counter + 1);
+    this.spinnerCounter.update(counter => counter + 1);
   }
 
   stopSpinner(): void {
@@ -17,6 +23,6 @@ export class SpinnerService {
       return;
     }
 
-    this.spinnerCounter.update((counter) => counter - 1);
+    this.spinnerCounter.update(counter => counter - 1);
   }
 }

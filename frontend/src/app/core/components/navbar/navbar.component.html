@@ -1,18 +1,20 @@
 <nav class="nav-container">
-  <a mat-flat-button
-     color="primary"
-     routerLink="/active-todos"
-     routerLinkActive="nav-link-selected">
+  <a
+    mat-flat-button
+    color="primary"
+    routerLink="/active-todos"
+    routerLinkActive="nav-link-selected">
     <mat-icon fontIcon="home"></mat-icon>
-    {{'header.appName' | translate}}
+    {{ 'header.appName' | translate }}
   </a>
   <ul class="nav-items">
     <li>
-      <a mat-flat-button
-         color="primary"
-         routerLink="/archived-todos"
-         routerLinkActive="nav-link-selected">
-        {{'header.archivedToDos' | translate}}
+      <a
+        mat-flat-button
+        color="primary"
+        routerLink="/archived-todos"
+        routerLinkActive="nav-link-selected">
+        {{ 'header.archivedToDos' | translate }}
       </a>
     </li>
   </ul>

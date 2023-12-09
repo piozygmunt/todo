@@ -1,14 +1,18 @@
 @if (!toDos.length) {
-<h3>{{'activeToDos.emptyList' | translate }}</h3>
+  <h3>{{ 'activeToDos.emptyList' | translate }}</h3>
 } @else {
-<div cdkDropList (cdkDropListDropped)="dropActiveToDo($event)">
-  @for (toDoItem of toDos; track getDoIdentity) {
-  <app-active-todo-item cdkDrag [toDo]="toDoItem" class="active-item" (remove)="toDoRemoved.emit(toDoItem)"
-    (resolve)="toDoResolved.emit(toDoItem)">
-    <button cdkDragHandle mat-icon-button color="primary">
-      <mat-icon>drag_indicator</mat-icon>
-    </button>
-  </app-active-todo-item>
-  }
-</div>
+  <div cdkDropList (cdkDropListDropped)="dropActiveToDo($event)">
+    @for (toDoItem of toDos; track getDoIdentity) {
+      <app-active-todo-item
+        cdkDrag
+        [toDo]="toDoItem"
+        class="active-item"
+        (remove)="toDoRemoved.emit(toDoItem)"
+        (resolve)="toDoResolved.emit(toDoItem)">
+        <button cdkDragHandle mat-icon-button color="primary">
+          <mat-icon>drag_indicator</mat-icon>
+        </button>
+      </app-active-todo-item>
+    }
+  </div>
 }

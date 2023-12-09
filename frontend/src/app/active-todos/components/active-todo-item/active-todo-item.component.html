@@ -1,19 +1,15 @@
 <div class="item-wrapper">
   <ng-content></ng-content>
   <span cdkDragHandle class="item-description">
-    {{toDo.description}}
+    {{ toDo.description }}
   </span>
   <span appElipsis class="item-validity">
-    {{toDo.validUntilDate | date}}
+    {{ toDo.validUntilDate | date }}
   </span>
-  <button mat-icon-button
-          color="primary"
-          (click)="resolve.emit()">
+  <button mat-icon-button color="primary" (click)="resolve.emit()">
     <mat-icon>done</mat-icon>
   </button>
-  <button mat-icon-button
-          color="primary"
-          (click)="remove.emit()">
+  <button mat-icon-button color="primary" (click)="remove.emit()">
     <mat-icon>delete</mat-icon>
   </button>
 </div>

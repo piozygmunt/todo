@@ -1,34 +1,51 @@
-<h1 mat-dialog-title>{{'createDialog.title' | translate}}</h1>
+<h1 mat-dialog-title>{{ 'createDialog.title' | translate }}</h1>
 <div [formGroup]="toDoForm" class="dialog-content" mat-dialog-content>
-  {{'createDialog.formInfo' | translate}}
+  {{ 'createDialog.formInfo' | translate }}
   <mat-form-field class="description">
-    <mat-label>{{'description' | translate}}</mat-label>
+    <mat-label>{{ 'description' | translate }}</mat-label>
     <textarea formControlName="description" matInput></textarea>
     @if (toDoForm.controls['description'].errors?.['maxlength']) {
-    <mat-error>
-      {{'createDialog.descriptionMaxLengthError' | translate: {value: descriptionMaxLength} }}
-    </mat-error>
+      <mat-error>
+        {{
+          'createDialog.descriptionMaxLengthError'
+            | translate: { value: descriptionMaxLength }
+        }}
+      </mat-error>
     }
   </mat-form-field>
   <mat-form-field>
-    <mat-label>{{'createDialog.validUntilDate' | translate}}</mat-label>
-    <input [min]="minValidityDate" [max]="maxValidityDate" formControlName="validUntil" matInput
-      [matDatepicker]="picker">
+    <mat-label>{{ 'createDialog.validUntilDate' | translate }}</mat-label>
+    <input
+      [min]="minValidityDate"
+      [max]="maxValidityDate"
+      formControlName="validUntil"
+      matInput
+      [matDatepicker]="picker" />
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    @if(toDoForm.controls['validUntil'].errors?.['matDatepickerMin']) {
-    <mat-error>
-      {{'createDialog.validUntilMinDateError' | translate: {value: (minValidityDate | date)} }}
-    </mat-error>
+    @if (toDoForm.controls['validUntil'].errors?.['matDatepickerMin']) {
+      <mat-error>
+        {{
+          'createDialog.validUntilMinDateError'
+            | translate: { value: (minValidityDate | date) }
+        }}
+      </mat-error>
     }
-    @if(toDoForm.controls['validUntil'].errors?.['matDatepickerMax']) {
-    <mat-error>
-      {{'createDialog.validUntilMaxDateError' | translate: {value: (maxValidityDate | date)} }}
-    </mat-error>
+    @if (toDoForm.controls['validUntil'].errors?.['matDatepickerMax']) {
+      <mat-error>
+        {{
+          'createDialog.validUntilMaxDateError'
+            | translate: { value: (maxValidityDate | date) }
+        }}
+      </mat-error>
     }
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="clearForm()">{{'createDialog.clearForm' | translate}}</button>
-  <button mat-button [disabled]="!toDoForm.valid" (click)="onSaveClick()">{{'createDialog.save' | translate}}</button>
+  <button mat-button (click)="clearForm()">
+    {{ 'createDialog.clearForm' | translate }}
+  </button>
+  <button mat-button [disabled]="!toDoForm.valid" (click)="onSaveClick()">
+    {{ 'createDialog.save' | translate }}
+  </button>
 </div>

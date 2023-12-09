@@ -1,12 +1,11 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
-
   public saveData(key: string, value: any) {
-    if (typeof value === "object") {
+    if (typeof value === 'object') {
       value = JSON.stringify(value);
     }
 

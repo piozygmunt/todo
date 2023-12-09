@@ -1,17 +1,16 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {ArchivedTodosComponent} from "./pages/archived-todos.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { ArchivedTodosComponent } from './pages/archived-todos.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ArchivedTodosComponent
-  }
+    component: ArchivedTodosComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ArchivedTodosRoutingModule {
-}
+export class ArchivedTodosRoutingModule {}

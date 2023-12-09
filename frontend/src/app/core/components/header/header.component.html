@@ -2,7 +2,10 @@
   <div class="header-toolbar-content">
     <app-navbar></app-navbar>
     @if (spinnerService.isSpinnerActive()) {
-    <mat-progress-spinner color="accent" mode="indeterminate" [diameter]="30"></mat-progress-spinner>
+      <mat-progress-spinner
+        color="accent"
+        mode="indeterminate"
+        [diameter]="30"></mat-progress-spinner>
     }
   </div>
 </mat-toolbar>

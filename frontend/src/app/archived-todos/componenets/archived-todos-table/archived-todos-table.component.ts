@@ -1,16 +1,28 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
-import {ArchivedTodosQuery, Direction, SortBy} from "../../../core/models/archived-todos-query";
-import {ArchivedTodosResponse} from "../../../core/models/archived-todos-response";
-import {ArchivedToDo, ToDoStatus} from "../../../core/models/archived-todo";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort, SortDirection} from "@angular/material/sort";
-import {merge, startWith} from "rxjs";
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import {
+  ArchivedTodosQuery,
+  Direction,
+  SortBy,
+} from '../../../core/models/archived-todos-query';
+import { ArchivedTodosResponse } from '../../../core/models/archived-todos-response';
+import { ArchivedToDo, ToDoStatus } from '../../../core/models/archived-todo';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, SortDirection } from '@angular/material/sort';
+import { merge, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-archived-todos-table',
   templateUrl: './archived-todos-table.component.html',
   styleUrls: ['./archived-todos-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArchivedTodosTableComponent implements AfterViewInit {
   readonly displayedColumns = ['description', 'creationDate', 'status'];
@@ -27,7 +39,8 @@ export class ArchivedTodosTableComponent implements AfterViewInit {
   archivedToDosResponse: ArchivedTodosResponse | null;
 
   @Output()
-  sortPageChange: EventEmitter<ArchivedTodosQuery> = new EventEmitter<ArchivedTodosQuery>();
+  sortPageChange: EventEmitter<ArchivedTodosQuery> =
+    new EventEmitter<ArchivedTodosQuery>();
 
   ngAfterViewInit() {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
@@ -39,16 +52,18 @@ export class ArchivedTodosTableComponent implements AfterViewInit {
           sortBy: this.getSortBy(this.sort.active),
           direction: this.getSortDirection(this.sort.direction),
           pageSize: this.paginator.pageSize,
-          requestedPage: this.paginator.pageIndex
-        })
+          requestedPage: this.paginator.pageIndex,
+        });
       });
   }
 
-  private getSortDirection(sortDirection: SortDirection): Direction | undefined {
+  private getSortDirection(
+    sortDirection: SortDirection
+  ): Direction | undefined {
     switch (sortDirection) {
-      case "asc":
+      case 'asc':
         return Direction.ASC;
-      case "desc":
+      case 'desc':
         return Direction.DESC;
       default:
         return undefined;
@@ -57,11 +72,11 @@ export class ArchivedTodosTableComponent implements AfterViewInit {
 
   private getSortBy(activeSort: string): SortBy | undefined {
     switch (activeSort) {
-      case "description":
+      case 'description':
         return SortBy.DESCRIPTION;
-      case "creationDate":
+      case 'creationDate':
         return SortBy.CREATION_DATE;
-      case "status":
+      case 'status':
         return SortBy.STATUS;
       default:
         return undefined;

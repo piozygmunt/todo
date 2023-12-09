@@ -1,15 +1,21 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {ToDo} from "../../../core/models/todo";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import { ToDo } from '../../../core/models/todo';
 
 @Component({
   selector: 'app-active-todo-list',
   templateUrl: './active-todo-list.component.html',
   styleUrl: './active-todo-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActiveTodoListComponent {
   @Input()
-  toDos: ToDo[] = []
+  toDos: ToDo[] = [];
 
   @Output()
   toDoResolved: EventEmitter<ToDo> = new EventEmitter<ToDo>();
@@ -21,8 +27,8 @@ export class ActiveTodoListComponent {
   toDosSwapped: EventEmitter<any> = new EventEmitter<any>();
 
   dropActiveToDo(dropEvent: any): void {
-    if(dropEvent.previousIndex === dropEvent.currentIndex) {
-      return
+    if (dropEvent.previousIndex === dropEvent.currentIndex) {
+      return;
     }
 
     this.toDosSwapped.emit(dropEvent);

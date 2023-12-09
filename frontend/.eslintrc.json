@@ -40,10 +40,17 @@
         "*.html"
       ],
       "extends": [
-        "plugin:@nx/angular-template",
-        "plugin:prettier/recommended"
+        "plugin:@nx/angular-template"
       ],
       "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*.component.html"],
+      "extends": ["plugin:@nx/angular-template", "plugin:prettier/recommended"],
+      "rules": {
+        "prettier/prettier": ["error", { "parser": "angular" }]
+      }
     }
   ]
 }

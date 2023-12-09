@@ -1,33 +1,50 @@
-<table mat-table matSort matSortActive="description" matSortDisableClear matSortDirection="desc" fixedLayout
-       [trackBy]="getArchivedDoIdentity"
-       [dataSource]="archivedToDosResponse?.archivedToDos || []">
-
+<table
+  mat-table
+  matSort
+  matSortActive="description"
+  matSortDisableClear
+  matSortDirection="desc"
+  fixedLayout
+  [trackBy]="getArchivedDoIdentity"
+  [dataSource]="archivedToDosResponse?.archivedToDos || []">
   <ng-container matColumnDef="description">
-    <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef> {{'description' | translate}} </th>
-    <td mat-cell appElipsis *matCellDef="let element">{{element.description}}</td>
+    <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef>
+      {{ 'description' | translate }}
+    </th>
+    <td mat-cell appElipsis *matCellDef="let element">
+      {{ element.description }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="creationDate">
-    <th mat-header-cell mat-sort-header disableClear
-        *matHeaderCellDef> {{'archivedToDos.creationDate' | translate}} </th>
-    <td mat-cell appElipsis *matCellDef="let element"> {{element.creationDate | date: 'MMM d, YYYY HH:mm'}} </td>
+    <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef>
+      {{ 'archivedToDos.creationDate' | translate }}
+    </th>
+    <td mat-cell appElipsis *matCellDef="let element">
+      {{ element.creationDate | date: 'MMM d, YYYY HH:mm' }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="status">
-    <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef> {{'archivedToDos.status' | translate}} </th>
+    <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef>
+      {{ 'archivedToDos.status' | translate }}
+    </th>
     <td
       [ngClass]="{
         'expired-status': element.status === ToDoStatus.EXPIRED,
-        'resolved-status': element.status === ToDoStatus.RESOLVED}"
+        'resolved-status': element.status === ToDoStatus.RESOLVED
+      }"
       appElipsis
       mat-cell
       *matCellDef="let element">
-      {{element | timeAgo | async}}
+      {{ element | timeAgo | async }}
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<mat-paginator [length]="archivedToDosResponse?.toDosCount" [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+<mat-paginator
+  [length]="archivedToDosResponse?.toDosCount"
+  [pageSizeOptions]="pageSizeOptions"></mat-paginator>
