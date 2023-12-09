@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "nx serve",
+    "build": "nx build",
+    "watch": "nx build --watch --configuration development",
+    "test": "nx test",
+    "lint": "nx lint"
   },
   "private": true,
   "dependencies": {
@@ -22,22 +23,41 @@
     "@angular/router": "^17.0.5",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "moment": "2.29.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.2",
-    "moment": "2.29.4"
+    "zone.js": "~0.14.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.5",
+    "@angular-devkit/core": "~17.0.5",
+    "@angular-devkit/schematics": "~17.0.5",
+    "@angular-eslint/eslint-plugin": "~17.0.0",
+    "@angular-eslint/eslint-plugin-template": "~17.0.0",
+    "@angular-eslint/template-parser": "~17.0.0",
     "@angular/cli": "~17.0.5",
     "@angular/compiler-cli": "^17.0.5",
+    "@nx/angular": "17.2.0",
+    "@nx/eslint": "17.2.0",
+    "@nx/eslint-plugin": "17.2.0",
+    "@nx/workspace": "17.2.0",
+    "@schematics/angular": "~17.0.5",
     "@types/jasmine": "~4.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "~8.48.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "jasmine-core": "~4.5.0",
+    "jsonc-eslint-parser": "^2.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "nx": "17.2.0",
+    "prettier": "3.1.0",
+    "prettier-eslint": "^16.1.2",
     "typescript": "~5.2.2"
   }
 }
